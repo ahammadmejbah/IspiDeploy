@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Category Analysis Details{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Category Analysis Details</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Total Revenue by Category</div>
+            {{ revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Sales Distribution by Category</div>
+            {{ pie_sales_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Revenue Trends by Category</div>
+            {{ line_revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Monthly Revenue by Category</div>
+            {{ box_revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Monthly Sales Volume by Category</div>
+            {{ violin_sales_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Category and Product</div>
+            {{ sunburst_revenue_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Sales Volume by Category and Product</div>
+            {{ treemap_sales_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution Across Categories</div>
+            {{ hist_revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Price vs Revenue by Category</div>
+            {{ scatter_price_revenue_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Parallel Categories for Category and Product Analysis</div>
+            {{ parallel_categories_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

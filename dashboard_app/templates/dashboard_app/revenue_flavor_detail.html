@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Revenue by Flavor Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Revenue by Flavor Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Total Revenue by Flavor</div>
+            {{ bar_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Share by Flavor</div>
+            {{ pie_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue vs. Price per Unit by Flavor</div>
+            {{ scatter_revenue_price_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Flavor</div>
+            {{ box_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Flavor (Histogram)</div>
+            {{ hist_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue by Flavor (Violin Plot)</div>
+            {{ violin_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue by Flavor and Product (Treemap)</div>
+            {{ treemap_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Trends Over Time by Flavor</div>
+            {{ line_revenue_trend_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Revenue by Flavor</div>
+            {{ area_cumulative_revenue_flavor_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Density Heatmap of Revenue and Sales Volume by Flavor</div>
+            {{ density_heatmap_revenue_volume_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

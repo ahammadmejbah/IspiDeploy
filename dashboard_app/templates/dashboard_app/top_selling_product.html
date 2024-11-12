@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Top Selling Products Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Top Selling Products Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Breakdown by Category and Product</div>
+            {{ treemap_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Sales Volume Funnel by Product Category</div>
+            {{ funnel_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Product Prices by Category</div>
+            {{ box_price_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Scatter Matrix of Sales and Revenue Features</div>
+            {{ scatter_matrix_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Density Heatmap of Revenue vs. Units Sold</div>
+            {{ density_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Parallel Coordinates Plot of Sales Features</div>
+            {{ parallel_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Top 10 Products by Revenue</div>
+            {{ revenue_bar_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Product Shelf Life</div>
+            {{ hist_shelf_life_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Trends by Category Over Time</div>
+            {{ line_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Category</div>
+            {{ pie_category_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

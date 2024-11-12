@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Monthly Sales Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Monthly Sales Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Sales Volume Over Time</div>
+            {{ area_sales_volume_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Treemap of Monthly Sales by Category</div>
+            {{ treemap_sales_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Sales Funnel by Product</div>
+            {{ funnel_sales_volume_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Sunburst of Monthly Sales by Category and Product</div>
+            {{ sunburst_sales_volume_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Revenue by Category</div>
+            {{ box_revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Price vs Revenue Density Contour</div>
+            {{ density_contour_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Violin Plot of Monthly Sales by Product</div>
+            {{ violin_sales_product_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue vs. Monthly Sales Volume by Category</div>
+            {{ scatter_revenue_sales_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Revenue by Category</div>
+            {{ pie_revenue_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Price Changes Over Time by Product</div>
+            {{ line_price_change_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

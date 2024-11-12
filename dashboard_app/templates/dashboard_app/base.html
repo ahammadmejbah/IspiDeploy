@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ispahani Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Gradient Navigation Menu with Dropdowns -->
+    <div class="nav-bar">
+        <div class="nav-link dropdown">
+            <a href="#" class="dropbtn">Overview</a>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/total-revenue/">Total Revenue</a>
+                <a href="/profit-margin/">Profit Margin</a>
+            </div>
+        </div>
+        <div class="nav-link dropdown">
+            <a href="#" class="dropbtn">Analysis</a>
+            <div class="dropdown-content">
+                <a href="/top-products/">Top Products</a>
+                <a href="/category-analysis/">Category Analysis</a>
+                <a href="/sales-growth/">Sales Growth</a>
+            </div>
+        </div>
+        <div class="nav-link dropdown">
+            <a href="#" class="dropbtn">Details</a>
+            <div class="dropdown-content">
+                <a href="/monthly-sales/">Monthly Sales</a>
+                <a href="/shelf-life/">Shelf Life</a>
+                <a href="/revenue-flavor/">Revenue by Flavor</a>
+                <a href="/revenue-packaging/">Revenue by Packaging</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Block -->
+    <div class="content">
+        {% block content %}
+        <!-- Page-specific content will be injected here -->
+        {% endblock %}
+    </div>
+</body>
+</html>

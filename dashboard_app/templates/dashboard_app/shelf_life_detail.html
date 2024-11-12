@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Shelf Life Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Shelf Life Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Shelf Life</div>
+            {{ hist_shelf_life_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life by Category</div>
+            {{ box_shelf_life_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Average Shelf Life by Category</div>
+            {{ bar_avg_shelf_life_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life Distribution by Product</div>
+            {{ violin_shelf_life_product_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life vs. Price per Unit</div>
+            {{ scatter_shelf_price_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Proportion of Products by Shelf Life Range</div>
+            {{ pie_shelf_life_range_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life Trends Over Time</div>
+            {{ line_shelf_life_trend_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life by Category and Product</div>
+            {{ treemap_shelf_life_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Shelf Life Distribution</div>
+            {{ area_cumulative_shelf_life_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Shelf Life Distribution by Price Range</div>
+            {{ hist_shelf_price_range_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Revenue by Packaging Type Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Revenue by Packaging Type Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Total Revenue by Packaging Type</div>
+            {{ bar_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Share by Packaging Type</div>
+            {{ pie_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue vs. Price per Unit by Packaging Type</div>
+            {{ scatter_revenue_price_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Packaging Type</div>
+            {{ box_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Packaging Type (Histogram)</div>
+            {{ hist_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue by Packaging Type (Violin Plot)</div>
+            {{ violin_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue by Packaging Type and Product (Treemap)</div>
+            {{ treemap_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Trends Over Time by Packaging Type</div>
+            {{ line_revenue_trend_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Revenue by Packaging Type</div>
+            {{ area_cumulative_revenue_packaging_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Density Heatmap of Revenue and Sales Volume by Packaging Type</div>
+            {{ density_heatmap_revenue_volume_packaging_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

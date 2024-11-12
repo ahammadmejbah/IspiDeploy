@@ -1,0 +1,98 @@
+{% extends "dashboard_app/base.html" %}
+
+
+{% block title %}Ispahani Dashboard - Home{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Business Performance Dashboard</h1>
+    <div class="card-grid">
+        <!-- Feature Card 1: Total Revenue -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Total Revenue</h3>
+            <p>${{ total_revenue|floatformat:2 }}</p>
+            <a href="{% url 'total_revenue_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 2: Top Selling Products -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-crown"></i></div>
+            <h3>Top Selling Product</h3>
+            <p>{{ top_product }} with {{ top_product_sales }} units sold</p>
+            <a href="{% url 'top_selling_product' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 3: Category Analysis -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-th-list"></i></div>
+            <h3>Top Category</h3>
+            <p>{{ top_category }}</p>
+            <a href="{% url 'category_analysis_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 4: Monthly Sales Volume -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-boxes"></i></div>
+            <h3>Average Monthly Sales</h3>
+            <p>{{ avg_monthly_sales|floatformat:2 }} units</p>
+            <a href="{% url 'monthly_sales_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 5: Profit Margin -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-percentage"></i></div>
+            <h3>Average Profit Margin</h3>
+            <p>{{ avg_profit_margin|floatformat:2 }}%</p>
+            <a href="{% url 'profit_margin_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 6: Product Shelf Life -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+            <h3>Product Shelf Life</h3>
+            <p>Longest: {{ max_shelf_life_product }}<br>Shortest: {{ min_shelf_life_product }}</p>
+            <a href="{% url 'shelf_life_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 7: Sales Growth Rate -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-arrow-up"></i></div>
+            <h3>Average Sales Growth Rate</h3>
+            <p>{{ avg_growth_rate|floatformat:2 }}%</p>
+            <a href="{% url 'sales_growth_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 8: Revenue by Flavor -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-ice-cream"></i></div>
+            <h3>Top Revenue by Flavor</h3>
+            <p>{{ top_flavor_revenue }}</p>
+            <a href="{% url 'revenue_flavor_detail' %}" class="card-button">View Details</a>
+        </div>
+        
+        <!-- Feature Card 9: Revenue by Packaging Type -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-box-open"></i></div>
+            <h3>Top Revenue by Packaging</h3>
+            <p>{{ top_packaging_revenue }}</p>
+            <a href="{% url 'revenue_packaging_detail' %}" class="card-button">View Details</a>
+        </div>
+
+        <!-- Feature Card 10: Machine Learning Models -->
+        <!-- Updated Card Component -->
+
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <div class="card-icon mb-3"><i class="fas fa-robot fa-2x"></i></div>
+                <h3 class="card-title">Machine Learning Models</h3>
+                <p class="card-text">Explore predictive insights and model performance</p>
+                <a href="{% url 'model_performance' %}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+{% endblock %}

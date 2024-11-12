@@ -1,0 +1,30 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Machine Learning Models Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Machine Learning Models Analysis</h1>
+
+    {% if error_message %}
+        <div class="error-message">{{ error_message }}</div>
+    {% else %}
+        <div class="summary-card">
+            <h3>Model Name: {{ model_name }}</h3>
+            <p><strong>Accuracy:</strong> {{ accuracy }}</p>
+            <p><strong>Total Samples Evaluated:</strong> {{ total_samples }}</p>
+            <h4>Sample Predictions (First 5):</h4>
+            <ul>
+                {% for index, prediction in sample_predictions %}
+                    <li>Sample {{ index }}: Predicted = {{ prediction }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Add sections for more detailed model insights, metrics, and visualizations -->
+        <div class="model-metrics-section">
+            <h3>Additional Metrics and Insights</h3>
+            <p>Include charts, performance metrics, and any relevant visualizations here.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

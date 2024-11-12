@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Profit Margin Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Profit Margin Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Profit Margin Over Time</div>
+            {{ line_profit_margin_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Average Profit Margin by Category</div>
+            {{ bar_avg_profit_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue vs. Profit Margin by Category</div>
+            {{ scatter_revenue_profit_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Profit Margin by Product</div>
+            {{ violin_profit_product_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Density Heatmap of Profit Margin and Monthly Revenue</div>
+            {{ density_heatmap_profit_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Share of Total Profit Margin by Category</div>
+            {{ pie_profit_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Profit Margin Distribution by Category</div>
+            {{ box_profit_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Profit Margin Over Time</div>
+            {{ area_cumulative_profit_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Profit Margin by Category and Product</div>
+            {{ treemap_profit_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Profit Margin</div>
+            {{ hist_profit_margin_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

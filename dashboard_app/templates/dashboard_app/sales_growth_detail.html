@@ -1,0 +1,51 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Sales Growth Analysis{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Sales Growth Analysis</h1>
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Monthly Growth Rate Over Time</div>
+            {{ line_growth_rate_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Average Growth Rate by Category</div>
+            {{ bar_avg_growth_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Sales Growth vs. Revenue by Category</div>
+            {{ scatter_growth_revenue_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Growth Rate Distribution by Category</div>
+            {{ box_growth_category_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Share of Growth Rate by Product</div>
+            {{ pie_growth_product_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Growth Rate by Category and Product</div>
+            {{ treemap_growth_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Growth Rate</div>
+            {{ hist_growth_rate_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Growth Rate by Product</div>
+            {{ violin_growth_product_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Density Heatmap of Growth Rate and Revenue</div>
+            {{ density_heatmap_growth_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Growth Rate Over Time</div>
+            {{ area_cumulative_growth_plot|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

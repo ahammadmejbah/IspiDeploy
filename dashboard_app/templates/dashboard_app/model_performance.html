@@ -1,0 +1,172 @@
+<!-- dashboard_app/templates/dashboard_app/model_performance.html -->
+
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Model Performance{% endblock %}
+
+{% block extra_head %}
+<!-- DataTables Bootstrap 4 CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- DataTables Buttons CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
+<style>
+    /* Custom Styles for Enhanced Table */
+    .table thead th {
+        vertical-align: middle;
+        text-align: center;
+        background-color: #343a40;
+        color: white;
+    }
+    .table tbody td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    /* Badge Styles */
+    .badge-success {
+        background-color: #28a745;
+    }
+    .badge-warning {
+        background-color: #ffc107;
+    }
+    .badge-danger {
+        background-color: #dc3545;
+    }
+    /* Table Hover Effect */
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    /* Alternate Row Colors */
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0,0,0,.05);
+    }
+    /* Adjust DataTables Pagination */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0.5rem 1rem;
+        margin-left: 0.2rem;
+        border-radius: 0.25rem;
+        border: 1px solid #dee2e6;
+        background-color: white;
+        color: #343a40;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #343a40 !important;
+        color: white !important;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #dee2e6 !important;
+        color: #343a40 !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center"><center>Machine Learning Model Performance</center></h1>
+    
+    {% if performances %}
+    <!-- Performance Table Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Performance Metrics</h5>
+                    <button id="refreshTable" class="btn btn-light btn-sm" title="Refresh Data">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="performanceTable" class="table table-striped table-bordered table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Model Name</th>
+                                    <th>Mean Squared Error (MSE)</th>
+                                    <th>R² Score</th>
+                                    <th>Cross-Validation R² Mean</th>
+                                    <th>Cross-Validation R² Std</th>
+                                    <th>Accuracy within ±10%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for perf in performances %}
+                                <tr>
+                                    <td>{{ perf.model_name }}</td>
+                                    <td>{{ perf.mse|floatformat:2 }}</td>
+                                    <td>{{ perf.r2_score|floatformat:2 }}</td>
+                                    <td>{{ perf.cross_val_r2_mean|floatformat:2 }}</td>
+                                    <td>{{ perf.cross_val_r2_std|floatformat:2 }}</td>
+                                    <td>
+                                        {% if perf.accuracy_within_tolerance >= 80 %}
+                                            <span class="badge badge-success" data-toggle="tooltip" title="High accuracy within tolerance">{{ perf.accuracy_within_tolerance|floatformat:2 }}%</span>
+                                        {% elif perf.accuracy_within_tolerance >= 60 %}
+                                            <span class="badge badge-warning" data-toggle="tooltip" title="Moderate accuracy within tolerance">{{ perf.accuracy_within_tolerance|floatformat:2 }}%</span>
+                                        {% else %}
+                                            <span class="badge badge-danger" data-toggle="tooltip" title="Low accuracy within tolerance">{{ perf.accuracy_within_tolerance|floatformat:2 }}%</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        No model performance data available. Please run the training script to generate metrics.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap JS Bundle (Includes Popper) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<!-- DataTables Buttons JS -->
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script>
+    $(document).ready(function() {
+        {% if performances %}
+        // Initialize DataTables with Bootstrap 4 styling and Buttons
+        var table = $('#performanceTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "order": [[ 6, "desc" ]],  // Order by 'Trained At' descending
+            "columnDefs": [
+                { "type": "num", "targets": [1, 2, 3, 4, 5] }
+            ],
+            "language": {
+                "emptyTable": "No data available in table"
+            },
+            "responsive": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+
+        // Initialize Bootstrap tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Refresh Table Button Functionality
+        $('#refreshTable').on('click', function() {
+            location.reload();
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}

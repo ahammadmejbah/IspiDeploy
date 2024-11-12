@@ -1,0 +1,62 @@
+{% extends "dashboard_app/base.html" %}
+
+{% block title %}Total Revenue Details{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Total Revenue Details</h1>
+    
+    <div class="plot-grid">
+        <div class="plot-card">
+            <div class="plot-card-title">Total Revenue Trend Over Time</div>
+            {{ line_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Top 10 Revenue-Generating Products</div>
+            {{ bar_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Category</div>
+            {{ pie_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue vs. Number of Units Sold</div>
+            {{ scatter_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution Across Categories</div>
+            {{ box_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Distribution of Monthly Revenues</div>
+            {{ hist_plot|safe }}
+        </div>
+        <div class="plot-card">
+            <div class="plot-card-title">Correlation Matrix of Revenue Features</div>
+            {{ heatmap_plot|safe }}
+        </div>
+        {% if violin_plot %}
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Distribution by Customer Type</div>
+            {{ violin_plot|safe }}
+        </div>
+        {% endif %}
+        {% if sunburst_plot %}
+        <div class="plot-card">
+            <div class="plot-card-title">Revenue Breakdown by City and Category</div>
+            {{ sunburst_plot|safe }}
+        </div>
+        {% endif %}
+        <div class="plot-card">
+            <div class="plot-card-title">Cumulative Revenue Over Time</div>
+            {{ area_plot|safe }}
+        </div>
+    </div>
+
+    <div class="page-navigation" style="text-align: center; margin-top: 20px;">
+        <a href="/previous-page-url/" class="nav-button">&laquo; Previous</a>
+        <span class="page-number">Page 1 of X</span>
+        <a href="/next-page-url/" class="nav-button">Next &raquo;</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+[
+    {
+        "model_name": "Linear Regression",
+        "mse": 1500.25,
+        "r2_score": 0.78,
+        "cross_val_r2_mean": 0.75,
+        "cross_val_r2_std": 0.03,
+        "accuracy_within_tolerance": 72.5,
+        "trained_at": "2024-04-01T09:30:00Z"
+    },
+    {
+        "model_name": "Random Forest Regressor",
+        "mse": 980.45,
+        "r2_score": 0.88,
+        "cross_val_r2_mean": 0.85,
+        "cross_val_r2_std": 0.02,
+        "accuracy_within_tolerance": 85.3,
+        "trained_at": "2024-04-05T11:15:00Z"
+    },
+    {
+        "model_name": "Gradient Boosting Regressor",
+        "mse": 1100.60,
+        "r2_score": 0.82,
+        "cross_val_r2_mean": 0.80,
+        "cross_val_r2_std": 0.025,
+        "accuracy_within_tolerance": 78.9,
+        "trained_at": "2024-04-10T14:45:00Z"
+    },
+    {
+        "model_name": "XGBoost Regressor",
+        "mse": 950.30,
+        "r2_score": 0.90,
+        "cross_val_r2_mean": 0.88,
+        "cross_val_r2_std": 0.015,
+        "accuracy_within_tolerance": 88.2,
+        "trained_at": "2024-04-15T08:20:00Z"
+    },
+    {
+        "model_name": "Support Vector Regressor",
+        "mse": 1300.75,
+        "r2_score": 0.80,
+        "cross_val_r2_mean": 0.78,
+        "cross_val_r2_std": 0.04,
+        "accuracy_within_tolerance": 76.4,
+        "trained_at": "2024-04-20T10:50:00Z"
+    },
+    {
+        "model_name": "K-Neighbors Regressor",
+        "mse": 1600.10,
+        "r2_score": 0.70,
+        "cross_val_r2_mean": 0.68,
+        "cross_val_r2_std": 0.05,
+        "accuracy_within_tolerance": 65.0,
+        "trained_at": "2024-04-25T13:30:00Z"
+    },
+    {
+        "model_name": "Ridge Regression",
+        "mse": 1400.50,
+        "r2_score": 0.76,
+        "cross_val_r2_mean": 0.74,
+        "cross_val_r2_std": 0.035,
+        "accuracy_within_tolerance": 70.2,
+        "trained_at": "2024-05-01T09:00:00Z"
+    },
+    {
+        "model_name": "Lasso Regression",
+        "mse": 1450.80,
+        "r2_score": 0.77,
+        "cross_val_r2_mean": 0.75,
+        "cross_val_r2_std": 0.032,
+        "accuracy_within_tolerance": 71.5,
+        "trained_at": "2024-05-05T16:25:00Z"
+    },
+    {
+        "model_name": "Elastic Net",
+        "mse": 1350.65,
+        "r2_score": 0.79,
+        "cross_val_r2_mean": 0.77,
+        "cross_val_r2_std": 0.028,
+        "accuracy_within_tolerance": 73.8,
+        "trained_at": "2024-05-10T12:10:00Z"
+    },
+    {
+        "model_name": "Decision Tree Regressor",
+        "mse": 1250.55,
+        "r2_score": 0.81,
+        "cross_val_r2_mean": 0.79,
+        "cross_val_r2_std": 0.03,
+        "accuracy_within_tolerance": 75.6,
+        "trained_at": "2024-05-15T15:40:00Z"
+    }
+]
